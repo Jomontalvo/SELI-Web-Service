@@ -47,7 +47,7 @@ namespace SELI.Domain.Helpers
         }
 
         /// <summary>
-        /// 
+        /// Convertir el registro de lectura SqlReader en un Objeto Salvoconducto
         /// </summary>
         /// <param name="reader"></param>
         /// <returns></returns>
@@ -65,6 +65,11 @@ namespace SELI.Domain.Helpers
             return resultPass;
         }
 
+        /// <summary>
+        /// Notificar la expedición de nuevo salvoconducto y crearlo en la Base de Datos
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<int> NotifyNewSafePassage(SafePassage model)
         {
             int newId = default;
@@ -91,6 +96,11 @@ namespace SELI.Domain.Helpers
             return newId;
         }
 
+        /// <summary>
+        /// Cancelar salvoconducto expedido y vigente.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<bool> CancelSafePassage(int id)
         {
             try
@@ -115,6 +125,22 @@ namespace SELI.Domain.Helpers
                 }
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Verificación de Inicio de sesión
+        /// </summary>
+        /// <param name="userModel"></param>
+        /// <returns></returns>
+        public async Task<Response> LoginAsync(User userModel)
+        {
+            var userLogged  = new Response()
+            {
+                IsSucess = true,
+                Message = "Success login.",
+                Result = new UserDTO { UserName = "juan@gmail.com", Password="ASFDG2353426346==", Role = "Suscriptor"}
+            };
+            return await Task.FromResult(userLogged);
         }
     }
 }

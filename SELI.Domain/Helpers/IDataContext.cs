@@ -8,5 +8,6 @@ namespace SELI.Domain.Helpers
         Task<int> NotifyNewSafePassage(SafePassage pass);
         Task<SafePassage> GetSafePassage(int id);
         Task<bool> CancelSafePassage(int id);
+        Task<Response> LoginAsync(User userModel);
     }
 }

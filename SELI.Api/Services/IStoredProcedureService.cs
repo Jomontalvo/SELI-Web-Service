@@ -8,5 +8,6 @@
         Task<int> AddNewSafePassage(SafePassage pass);
         Task<SafePassage> GetSafePassage(int id);
         Task<Response> CancelSafePassage(int id);
+        Task<Response> LoginAsync(User userModel);
     }
 }

@@ -72,5 +72,18 @@
                 return null;
             }
         }
+
+        public async Task<Response> LoginAsync(User userModel)
+        {
+            try
+            {
+                return await _cnxSql.LoginAsync(userModel);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error de inicio de sesión ");
+                return null;
+            }
+        }
     }
 }
